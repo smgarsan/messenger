@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/ui/view_models/logout_view_model.dart';
 
 class TopBar extends StatelessWidget implements PreferredSizeWidget {
-  const TopBar({super.key});
+  final LogoutViewModel viewModel;
+
+  const TopBar({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +25,12 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
               focusColor: Colors.transparent,
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
-              onPressed: () {},
               icon: const Icon(
                 color: Color(0xFF1A1A23),
                 Icons.add_circle
               ),
+            onPressed: () {
+            },
             ),
           ),
         ],
@@ -39,7 +43,9 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
             focusColor: Colors.transparent,
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
-            onPressed: () {},
+            onPressed: () {
+              viewModel.logout.execute();
+            },
             icon: Stack(
               alignment: Alignment.bottomRight,
               children: [

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/ui/view_models/login_view_model.dart';
 import 'package:messenger/ui/views/widgets/login_form.dart';
 import 'package:messenger/ui/views/widgets/logo.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  final LoginViewModel viewModel;
+
+  const LoginScreen({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                   child: Logo()
                 ),
                 const SizedBox(height: 32),
-                const LoginForm()
+                LoginForm(viewModel: viewModel)
               ],
             ),
           ),

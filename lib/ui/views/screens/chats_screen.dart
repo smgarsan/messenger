@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/ui/view_models/logout_view_model.dart';
 import '../widgets/top_bar.dart';
 import '../widgets/chat_tile.dart';
 import '../widgets/bottom_bar.dart';
@@ -31,13 +32,15 @@ final List<Map<String, dynamic>> contacts = [
 ];
 
 class ChatsScreen extends StatelessWidget {
-  const ChatsScreen({super.key});
+  final LogoutViewModel viewModel;
+
+  const ChatsScreen({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF8F9FA),
-      appBar: TopBar(),
+      appBar: TopBar(viewModel: viewModel,),
       body: ListView.builder(
         padding: const EdgeInsets.only(bottom: 16.0),
         itemCount: contacts.length,

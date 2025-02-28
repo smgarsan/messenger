@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/ui/view_models/login_view_model.dart';
 import 'custom_text_field.dart';
 import '../widgets/custom_button.dart';
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+  final LoginViewModel viewModel;
+
+  const LoginForm({super.key, required this.viewModel});
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -62,7 +65,12 @@ class _LoginFormState extends State<LoginForm> {
         ),
         const SizedBox(height: 16),
         CustomButton(
-          onPressed: () {},
+          onPressed: () {
+            widget.viewModel.login.execute((
+              _username.text,
+              _password.text
+            ));
+          },
           text: 'Login',
           icon: Icons.arrow_forward,
         ),
